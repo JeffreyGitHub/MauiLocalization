@@ -4,13 +4,40 @@
 Translate Your .NET MAUI App with LocalizationResourceManager.Maui 
 https://www.youtube.com/watch?v=IBz9Ku24ZGY
 
-LocStep1: Installed package LocalizationResourceManager.Maui
-LocStep2: Added resources files in the project including added languages and strings
-LocStep3: Setup to using installed package LocalizationResourceManager.Maui
-LocStep4: Added name space in Xaml file
+LocStep61: Installed package LocalizationResourceManager.Maui
+LocStep62: Added resources files in the project including added languages and strings
+LocStep63: Setup to using installed package LocalizationResourceManager.Maui in MauiProgram.cs
 
-Error msg
+          builder.UseLocalizationResourceManager(settings =>
+          			{
+          				settings.RestoreLatestCulture(true);
+          				settings.AddResource(Resources.JeffResources.ResourceManager);
+          			})
+LocStep64: Added name space in Xaml file
+          <ContentPage ...
+                       xmlns:loc="clr-namespace:LocalizationResourceManager;assembly=LocalizationResourceManager.Maui"
+                       ...>
+LocStep65: Language button clicked
+          private void OnCounterClicked(object sender, EventArgs e)
+          	{
+          		if(_localizationResourceManagerInstance.CurrentCulture.TwoLetterISOLanguageName == "en")
+          			_localizationResourceManagerInstance.CurrentCulture = CultureInfo.CreateSpecificCulture("fr");
+          		else
+          			_localizationResourceManagerInstance.CurrentCulture = CultureInfo.CreateSpecificCulture("en");
+          	}
+          }
+LocStep66: Register MainPage in MauiProgram.cs
+
+          builder.Services.AddTransient<MainPage>();
+
+
+Error msg 
 0>MainPage.xaml(20,17): Error XFC0000 : Cannot resolve type "using:LocalizationResourceManager.Maui:Translate".
-Solution: Another option works
+
+Solution: other option1 works
 Localization in .NET MAUI - Adding Multi-Language to Your Apps 
 https://www.youtube.com/watch?v=cf4sXULR7os
+
+Solution: other option2 works
+Localization In .NET MAUI (Multi Language Support)
+https://www.youtube.com/watch?v=YHEdPg1vUr0

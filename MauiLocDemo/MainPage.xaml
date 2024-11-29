@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:jrs="clr-namespace:MauiLocDemo.Resources"
+             xmlns:extension="clr-namespace:MauiLocDemo.Extension"
+             xmlns:maui="using:LocalizationResourceManager.Maui"
              x:Class="MauiLocDemo.MainPage">
 
     <ScrollView>
@@ -20,6 +23,16 @@
             
             <Label
                 Text="{Binding LocalizationResourceManager[Hello], Mode=OneWay}"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+            
+            <Label
+                Text="{extension:Translate Key=Hello}"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+            
+            <Label
+                Text="{x:Static jrs:JeffResources.Hello}"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
 
